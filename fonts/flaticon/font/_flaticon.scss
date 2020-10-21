@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 06/05/2019 12:06
+    Creation date: 31/03/2019 22:35
     */
 
     @font-face {
@@ -37,16 +37,20 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-airplane:before { content: "\f100"; }
-.flaticon-add:before { content: "\f101"; }
-.flaticon-ferry:before { content: "\f102"; }
+    .flaticon-money-bag-with-dollar-symbol:before { content: "\f100"; }
+.flaticon-bar-chart:before { content: "\f101"; }
+.flaticon-line-chart:before { content: "\f102"; }
 .flaticon-box:before { content: "\f103"; }
-.flaticon-lorry:before { content: "\f104"; }
-.flaticon-warehouse:before { content: "\f105"; }
+.flaticon-open:before { content: "\f104"; }
+.flaticon-settings:before { content: "\f105"; }
+.flaticon-target:before { content: "\f106"; }
+.flaticon-medal:before { content: "\f107"; }
     
-    $font-Flaticon-airplane: "\f100";
-    $font-Flaticon-add: "\f101";
-    $font-Flaticon-ferry: "\f102";
+    $font-Flaticon-money-bag-with-dollar-symbol: "\f100";
+    $font-Flaticon-bar-chart: "\f101";
+    $font-Flaticon-line-chart: "\f102";
     $font-Flaticon-box: "\f103";
-    $font-Flaticon-lorry: "\f104";
-    $font-Flaticon-warehouse: "\f105";
+    $font-Flaticon-open: "\f104";
+    $font-Flaticon-settings: "\f105";
+    $font-Flaticon-target: "\f106";
+    $font-Flaticon-medal: "\f107";
