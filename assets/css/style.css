@@ -125,7 +125,6 @@ h2{
   background: #fff;
   z-index: 997;
   padding: 15px 0;
-  border-bottom: 1px solid #e6f2fb;
 }
 
 #header.header-scrolled {
@@ -861,7 +860,7 @@ section {
   font-style: italic;
   margin: 0 15px 15px 15px;
   padding: 20px;
-  background: #f3f9fd;
+  background: #e6fccf;
   position: relative;
   margin-bottom: 35px;
   border-radius: 6px;
@@ -1505,11 +1504,10 @@ section {
 
 .contact .info i {
   font-size: 20px;
-  color: #2487ce;
+  color: #FF6640;
   float: left;
   width: 44px;
   height: 44px;
-  background: #e3f0fa;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1522,24 +1520,21 @@ section {
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 5px;
-  color: #124265;
+  color: #004120;
 }
 
 .contact .info p {
   padding: 0 0 0 60px;
   margin-bottom: 0;
   font-size: 14px;
-  color: #217bbc;
+  color: #919191;
 }
 
 .contact .info .email, .contact .info .phone {
   margin-top: 40px;
 }
 
-.contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
-  background: #2487ce;
-  color: #fff;
-}
+
 
 .contact .php-email-form {
   width: 100%;
