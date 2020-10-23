@@ -9,7 +9,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #444444;
 }
 
@@ -18,12 +18,18 @@ a {
 }
 
 a:hover {
-  color: #469fdf;
+  color: red;
   text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+
+h2{
+  font-weight: 400;
+  color: #004120 !important;
 }
 
 /*--------------------------------------------------------------
@@ -174,14 +180,15 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu a {
   display: block;
   position: relative;
-  color: #124265;
+  color: #9e422b;
   transition: 0.3s;
-  font-size: 14px;
-  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
-  color: #2487ce;
+  color: #FF6640;
 }
 
 .nav-menu .drop-down ul {
@@ -1933,4 +1940,8 @@ section {
   background: #3194db;
   color: #fff;
   text-decoration: none;
+}
+
+.img-custom{
+  width: 100px;
 }
