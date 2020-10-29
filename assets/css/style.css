@@ -1945,3 +1945,16 @@ section {
 .img-custom{
   width: 100px;
 }
+
+.btn-custom{
+  background: #FF6640 !important;
+  color: white;
+}
+
+button a{
+  color: #fff;
+}
+
+button a:hover{
+  color: #004120;
+}
