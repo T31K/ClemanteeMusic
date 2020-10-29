@@ -1,0 +1,25 @@
+.btn-green{
+  background: #1A4038;
+  color: white;
+  outline : none;
+  border : none;
+}
+
+.btn-green:hover a, .btn-green a :clicked{
+  outline: none;
+  color: red;
+}
+
+.btn-lightgreen{
+  background: #93C01F;
+  color: white;
+  outline : none;
+  border : none;
+}
+
+.btn-orange{
+  background: #EE7F46;
+  color: white;
+  outline : none;
+  border : none;
+}
