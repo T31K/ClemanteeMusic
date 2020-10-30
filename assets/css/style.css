@@ -78,19 +78,47 @@ h2{
 #preloader:before {
   content: "";
   position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #2487ce;
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  -webkit-animation: animate-preloader 1s linear infinite;
-  animation: animate-preloader 1s linear infinite;
+  top: 35vh;;
+  left: 45vw; 
+  /* border: 6px solid #2487ce; */
+  background-image: url("../img/loading.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 120px;
+  height: 144px;
+
+}
+@media (max-width: 700px){
+  #preloader:before {
+    content: "";
+    position: fixed;
+    top: 35vh;
+    left: 42%;
+    /* border: 6px solid #2487ce; */
+    background-image: url("../img/loading.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 120px;
+    height: 144px;
+}
 }
 
-@-webkit-keyframes animate-preloader {
+@media (max-width: 500px){
+  #preloader:before {
+    content: "";
+    position: fixed;
+    top: 35vh;
+    left: 38%;
+    /* border: 6px solid #2487ce; */
+    background-image: url("../img/loading.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 120px;
+    height: 144px;
+}
+}
+
+/* @-webkit-keyframes animate-preloader {
   0% {
     transform: rotate(0deg);
   }
@@ -106,7 +134,8 @@ h2{
   100% {
     transform: rotate(360deg);
   }
-}
+} */
+
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
@@ -150,11 +179,13 @@ h2{
   max-height: 40px;
 }
 
+
 @media (max-width: 992px) {
   #header .logo {
     font-size: 28px;
   }
 }
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
