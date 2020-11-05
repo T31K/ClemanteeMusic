@@ -1702,7 +1702,7 @@ section {
 
 .portfolio-details .portfolio-details-carousel .owl-nav, .portfolio-details .portfolio-details-carousel .owl-dots {
   margin-top: 5px;
-  text-align: left;
+  text-align: center;
 }
 
 .portfolio-details .portfolio-details-carousel .owl-dot {
@@ -1712,10 +1712,13 @@ section {
   height: 12px;
   border-radius: 50%;
   background-color: #ddd !important;
+  outline:none;
 }
 
 .portfolio-details .portfolio-details-carousel .owl-dot.active {
-  background-color: #2487ce !important;
+  background-color: #1A4037 !important;
+  outline:none;
+
 }
 
 .portfolio-details .portfolio-info {
