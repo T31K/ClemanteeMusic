@@ -131,13 +131,32 @@ ul.custom{
   border: none !important;
 }
 
-div.item h4 a{
-  color: #222;
+
+
+div h4 a:hover{
+  color: #1A4038 !important;
+  outline: none !important;
 }
 
-div.item h4 a:hover:focus:hover{
+div h4 a :active{
+  outline : none !important;
+  border: none !important;
+}
+
+div h4 a img:active, .slick-slide img:active {
+  outline: none !important;
+}
+div h4 a.active{
   color: #EE7F46;
 }
-div.item h4 a.active{
-  color: #EE7F46;
+
+@media (max-width: 992px){
+  div h4 a {
+    font-size: 15px !important;
+  }
+}
+
+.slick-prev:before, .slick-next:before{
+  margin-top: 100px !important;
+  color: #1A4038 !important;
 }
