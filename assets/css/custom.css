@@ -104,3 +104,40 @@ ul.custom{
   padding-inline-start: 12px !important;
 
 }
+
+.owl-nav .owl-next, .owl-nav .owl-prev {
+  position: absolute;
+  top: 48%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+.owl-nav .owl-next {
+  right: 0;
+  display: flex;
+  margin-right: 2%;
+  font-size: 45px !important;
+  outline: none;
+}
+.owl-nav .owl-prev{
+  left: 0;
+  display: flex;
+  margin-left: 2%;
+  font-size: 45px !important;
+  outline: none;
+}
+
+.owl-nav.owl-next:active:focus:hover , .owl-nav.owl-prev:active:focus:hover{
+  outline: none !important;
+  border: none !important;
+}
+
+div.item h4 a{
+  color: #222;
+}
+
+div.item h4 a:hover:focus:hover{
+  color: #EE7F46;
+}
+div.item h4 a.active{
+  color: #EE7F46;
+}
