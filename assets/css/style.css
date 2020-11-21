@@ -525,6 +525,7 @@ section {
 
 .section-bg {
   background-color: #f8fbfe;
+  height: 100vh !important;
 }
 
 .section-title {
