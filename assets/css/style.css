@@ -525,7 +525,6 @@ section {
 
 .section-bg {
   background-color: #f8fbfe;
-  height: 100vh !important;
 }
 
 .section-title {
@@ -853,7 +852,6 @@ section {
 }
 
 .testimonials .testimonial-item p::after {
-  content: "";
   width: 0;
   height: 0;
   border-top: 20px solid #f3f9fd;
@@ -867,6 +865,16 @@ section {
 .testimonials .owl-nav, .testimonials .owl-dots {
   margin-top: 5px;
   text-align: center;
+}
+
+.testimonial-description{
+  height: 300px;
+  background: #e6fccf;
+  border-radius: 12px;
+  box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.05);
+  padding: 1px;
+  margin-right:10px;
+  margin-left: 10px;
 }
 
 .testimonials .owl-dot {
