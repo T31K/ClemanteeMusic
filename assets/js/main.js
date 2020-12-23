@@ -226,7 +226,7 @@
 
     $("#whatsapp-a").click(function() {
         $(this).attr('href',function(i,str) {
-          return str + message;
+          return message === undefined ? str + "Hi there!" : str + message;
        });
     });
 });
