@@ -216,4 +216,20 @@
     aos_init();
   });
 
+
+
+  $(document).ready(function() {
+    let message
+    $("#whatsapp").on("change paste keyup", function() {
+      message = $(this).val()
+   });
+
+    $("#whatsapp-a").click(function() {
+        $(this).attr('href',function(i,str) {
+          return str + message;
+       });
+    });
+});
+
 })(jQuery);
+
