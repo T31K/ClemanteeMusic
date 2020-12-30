@@ -1,9 +1,4 @@
-/**
-* Template Name: OnePage - v2.1.0
-* Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+
 !(function($) {
   "use strict";
 
@@ -189,12 +184,7 @@
       aos_init();
     });
 
-    // Initiate venobox (lightbox feature used in portofilo)
-    $(document).ready(function() {
-      $('.venobox').venobox({
-        'share': false
-      });
-    });
+   
   });
 
   // Portfolio details carousel
