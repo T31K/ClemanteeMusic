@@ -2,11 +2,16 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-body {
-  font-family: 'Montserrat', sans-serif;
-  color: #444444;
-  overflow-x: hidden !important;
+
+  
+html, body {
+  overflow-x: hidden;
 }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    color: #444444;
+    position: relative
+  }
 
 a {
   color: #1A4038;
