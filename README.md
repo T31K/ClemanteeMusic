@@ -6,4 +6,4 @@ Clemantee Music is a music education centre based in Kuala Lumpur, Malaysia. Thi
 - [x] Bootstrap
 - [x] jQuery
 - [x] Owl carousel
-- [x] 
+
