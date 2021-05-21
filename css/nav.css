@@ -97,7 +97,7 @@
     transition: all 200ms linear;
 }
 .nav-item:hover .nav-link{
-	color: #94C11F !important;
+	color: var(--brandOrange) !important;
 }
 .nav-item.active .nav-link{
 	color: #777 !important;
@@ -114,7 +114,7 @@
 	width: 100%;
 	height: 2px;
 	content: '';
-	background-color: #94C11F;
+	background-color: var(--brandOrange);
 	opacity: 0;
     transition: all 200ms linear;
 }
