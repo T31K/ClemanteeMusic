@@ -348,9 +348,7 @@
 		}
 	});
 
-	$('#whatsapp_send').click(function() {
-		console.log('hey')
-	})
+
 
 	// $('#1_tutor').click(function () {
 	// 	$('#tutor_name').text(tutor_arr[0][1])

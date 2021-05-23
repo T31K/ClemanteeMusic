@@ -3947,6 +3947,9 @@ div.image img{
 
 ***/
 
+.sponsors-outer .sponsors-carousel .slide-item .image-box a img {
+	filter: grayscale(100%);
+}
 .testimonial-section{
 	position: relative;
 	background-color: #f9f5f0;
