@@ -371,4 +371,20 @@
   margin-left: 5px;
 }
 
+.whatsapp-btn{
+  display: block;
+  margin: 0 auto;
+  background: #15C756;
+  color: var(--white);
+  border-radius: 2em;
+  font-size: 16px;
+  padding: 5px 22px;
+  height: 10%;
 
+}
+
+.whatsapp-btn img{
+  width: 20px;
+  margin-left: 10px;
+
+}
