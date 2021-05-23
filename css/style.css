@@ -3946,9 +3946,17 @@ div.image img{
 ====================================================================
 
 ***/
+@media only screen and (max-width: 599px) {
+	.sponsors-outer .sponsors-carousel .slide-item .image-box a img {
+		width: 50% !important;
+	}
+}
 
 .sponsors-outer .sponsors-carousel .slide-item .image-box a img {
 	filter: grayscale(100%);
+	width: 85%;
+	margin: 0 auto;
+
 }
 .testimonial-section{
 	position: relative;
