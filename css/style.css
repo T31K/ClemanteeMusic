@@ -370,12 +370,30 @@ img{
 	height:auto;
 }
 
-div.image img{
-	width: 20%;
+div.image img {
+	width: 150px;
 }
 
-.rounded{
-	border-radius: 20px;
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+	div.image img {
+		width: 100px !important;
+	}
+}
+
+@media only screen and (min-width: 375px) and (max-width: 599px) {
+	div.image img {
+		width: 60px !important;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 374px) {
+	div.image img {
+		width: 30px !important;
+	}
+}
+
+.rounded-edge {
+	border-radius: 25px;
 }
 
 .dropdown-toggle::after{

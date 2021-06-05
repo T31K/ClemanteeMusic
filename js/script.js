@@ -301,38 +301,40 @@
 		});
 	}
 
-	let tutor_arr = [
-		["imgsrc",
-
-		],
-		["imgsrc",
-
-		],
-		["imgsrc",
-
-		],
-		["imgsrc",
-
-		],
-	]
 
 	let teachers = {
-		name: ["Mr. Wong Khye Mun", "Ms. Tee Ying Yi", "Ms Frances Tsen", 	"Ms. Rachel Wee",],
+		name: ["Mr. Wong Khye Mun", "Ms. Tee Ying Yi", "Ms Frances Tsen", "Ms. Rachel Wee", "Mr. Hor Yee Cheng", "Mr. Foo Han Tee "],
 		text_1: ["Khye Mun stays true to his vision as an educator – ‘teaching music differently’ to provide the highest quality of music education. He focuses on creating memorable experiences which includes: service, communication, and environment.",
 						 "We have a saying here at Clemantee Music: “No one handles kids as well as Ying Yi does”. It is no surprise then, for a gentle and caring educator with over a decade of teaching experience to be able to do what she does.",
 						 "Hailing from Sabah, Frances is the lead vocalist for the all girl band, Crinkle Cut. Their latest album ‘Sweet Nothings’ redefines the sound of Malaysian indie music.",
-						 "The newest addition to the family, Rachel is a graduate from UPM with a Bachelor’s Degree in Contemporary Music. She hopes to inspire students to be a well-rounded pianist through her knowledge in both classical and contemporary piano."],
+						 "The newest addition to the family, Rachel is a graduate from UPM with a Bachelor’s Degree in Contemporary Music. She hopes to inspire students to be a well-rounded pianist through her knowledge in both classical and contemporary piano.",
+						 "Yee Cheng is the youngest educator here at Clemantee Music, he graduated from The Malaysian Institute of Arts with a Diploma in Music Performance. He furthered his studies at Mahidol University in Thailand. ",
+						 "There is no one more passionate about violin than Foo Han. He earned his Bachelor’s Degree from The Central Conservatory of Music in Beijing in 2011 under the tutelage of the renowned Professor Liu Pei Yan."],
 		text_2: ["Khye Mun graduated from UCSI University with a Bachelor in Contemporary Music. With a teaching experience of over 9 years, he is capable of handling students of any sort. Before making the decision to be a full time educator, Khye Mun was an active music producer.",
 						 "Ying Yi holds a Bachelor’s Degree in Classical Music from UCSI University. On top of that, she is also a certified Musikgarten educator, responsible for kick starting the musical journey for students as young as 2 months old!",
 						 "Yet another graduate of UCSI University in our team, Frances holds a Bachelor’s Degree in Contemporary Music, majoring in Vocals. Apart from teaching, she is an active session musician in the industry, fronting as a lead vocalist in the KL International Jazz Festival in 2013 being one of her notable performances.",
-		         "Besides having 6 years of teaching experience, Rachel has been actively organising competitions and recitals for students, giving them an opportunity to perform."],
+		         "Besides having 6 years of teaching experience, Rachel has been actively organising competitions and recitals for students, giving them an opportunity to perform.",
+						 "Armed with the knowledge of both classical and electric guitar, Yee Cheng can teach you how to play your favourite pop tunes just by listening, lead a band as a lead guitarist, and also make reading classical pieces easy.",
+						 "After graduating from the Conservatory, Foo Han devoted the next decade guiding students with a desire to help them overcome difficulties in learning such a technical demanding instrument. Thus, eliminating them to toil through a long and uninteresting violin learning journey while maintaining the same quality outcome. "],
 		text_3: ["Khye Mun is a busy man running day-to-day operation at Clemantee Music. However, don’t be afraid to approach him for any enquiries or just a friendly chat!",
 						 "An educator full of joy and positivity, it is no wonder kids go home with a smile on their faces after every lesson.",
 						 "Frances holds the record for ‘The Most Punctual Teacher’. She hopes to use her vast experiences in both teaching and performing to pass on the knowledge of singing and showmanship.",
-						 "With a cheerful and easy going personality, her classes are always enjoyable and effective at the same time. Need a friendly piece of advise or someone to lend an ear? Rachel is here!"],
-		instrument: [],
-		classes: [],
-		src: []
+						 "With a cheerful and easy going personality, her classes are always enjoyable and effective at the same time. Need a friendly piece of advise or someone to lend an ear? Rachel is here!",
+						 "Equipped with recording and video editing skills, Yee Cheng gave students a glimpse of what it takes to post music related contents on Youtube. Besides playing the guitar, he is an avid choir member performing at various countries, which includes performing at the Bartok Music Festival in Hungary. ",
+						 "As long as you are willing to learn, Foo Han will teach you without any hesitation, enabling you to benefit the most throughout your journey. "],
+		instruments: [
+						"Piano | Music Production",
+						"Piano | Musikgarten",
+						"Piano | Keyboard",
+						"Vocal | Piano",
+						"Violin | Piano",
+						"Electric/Acoustic/Classical Guitar",],
+		src: ["images/teachers/0.png",
+		 			"images/teachers/1.png",
+					"images/teachers/2.png",
+					"images/teachers/3.png",
+					"images/teachers/4.png",
+					"images/teachers/5.png",]
 	}
 
 	$(".teachers").on({
@@ -342,45 +344,15 @@
 			$('#tutor_text_1').text(`${teachers.text_1[this.id]}`)
 			$('#tutor_text_2').text(`${teachers.text_2[this.id]}`)
 			$('#tutor_text_3').text(`${teachers.text_3[this.id]}`)
+			$('#tutor_instruments').text(`${teachers.instruments[this.id]}`)
+			$('#teacher_a_img').attr("href", `${teachers.src[this.id]}` )
+			$('#teacher_img').attr("src", `${teachers.src[this.id]}` )
 		},
 		"mouseout" : function() {
 			this.src= `${this.src.substring(0,this.src.length-10)}.svg`
 		}
 	});
 
-
-	// $('#1_tutor').click(function () {
-	// 	$('#tutor_name').text(tutor_arr[0][1])
-	// 	$('#tutor_text_1').text(tutor_arr[0][2])
-	// 	$('#tutor_text_2').text(tutor_arr[0][3])
-	// 	$('#tutor_text_3').text(tutor_arr[0][4])
-	// })
-
-	// $('#1_tutor').hover(function () {
-	// 	$(this).attr('src', function()
-	// })
-
-	// $('#2_tutor').click(function () {
-	// 	$('#tutor_name').text(tutor_arr[1][1])
-	// 	$('#tutor_text_1').text(tutor_arr[1][2])
-	// 	$('#tutor_text_2').text(tutor_arr[1][3])
-	// 	$('#tutor_text_3').text(tutor_arr[1][4])
-	// })
-
-	// $('#3_tutor').click(function () {
-	// 	$('#tutor_name').text(tutor_arr[2][1])
-	// 	$('#tutor_text_1').text(tutor_arr[2][2])
-	// 	$('#tutor_text_2').text(tutor_arr[2][3])
-	// 	$('#tutor_text_3').text(tutor_arr[2][4])
-	// })
-
-
-	// $('#4_tutor').click(function () {
-	// 	$('#tutor_name').text(tutor_arr[3][1])
-	// 	$('#tutor_text_1').text(tutor_arr[3][2])
-	// 	$('#tutor_text_2').text(tutor_arr[3][3])
-	// 	$('#tutor_text_3').text(tutor_arr[3][4])
-	// })
 
 
 

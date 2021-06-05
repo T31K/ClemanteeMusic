@@ -5,6 +5,7 @@
 
 
 
+
 	.sec-title h2{
 		font-size: 40px;
 	}
@@ -90,6 +91,7 @@
 .desktop_teacher{
 	display: none;
 }
+
 
 @media only screen and (max-width: 1023px){
 	.sticky-header{
