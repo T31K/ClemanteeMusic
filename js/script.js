@@ -349,7 +349,6 @@
 	});
 
 
-
 	// $('#1_tutor').click(function () {
 	// 	$('#tutor_name').text(tutor_arr[0][1])
 	// 	$('#tutor_text_1').text(tutor_arr[0][2])

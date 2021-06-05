@@ -4934,6 +4934,10 @@ footer{
 
 }
 
+footer div.col-lg-4 {
+	padding-left: 25px;
+	padding-right: 25px;
+}
 .main-footer{
 	position:relative;
 	background-color: var(--lightGrey);
@@ -4941,6 +4945,15 @@ footer{
 	padding: 2.5em;
 }
 
+footer div.col-lg-4 li.title {
+	font-size: 25px;
+	font-family: "Fredoka One",	cursive;
+	margin-bottom: 20px;
+}
+
+footer li.title a {
+	color: var(--brandGreen) !important;
+}
 
 .main-footer:before{
 	position: absolute;
