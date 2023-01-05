@@ -28,7 +28,9 @@
 	}
 
 	headerStyle();
-
+	
+	let d = new Date
+	$('.copyright').text(`Copyright © ${d.getFullYear()} Clemante Music | All Rights Reserved`)
 	//Submenu Dropdown Toggle
 	if($('.main-header li.dropdown ul').length){
 		$('.main-header .navigation li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>');
