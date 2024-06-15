@@ -1,0 +1,49 @@
+.scale-card {
+  width: 100%;
+  background:#f2edd7;
+  border-radius: 20px;
+  font-family: 'Fredoka One', cursive;
+}
+
+
+.title {
+  font-size: 55px;
+  margin: 10px auto;
+}
+
+.title-round {
+  background: white;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.subtitle {
+  font-size: 25px;
+  margin: 10px auto;
+}
+
+#octave {
+  font-size: 20px;
+}
+
+.opacity-100 {
+  opacity: 100%;
+}
+
+.opacity-30 {
+  opacity: 30%;
+}
+
+.img-hand {
+  width: 65px;
+}
+
+.btn-randomize {
+  background: #3a6351;
+  color: white;
+}
