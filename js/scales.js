@@ -3,63 +3,63 @@ $(document).ready(function () {
     {
       key: "C",
       type: "major",
-      motion: "Similar Motion",
+      motion: "Scales (similar motion)",
       hands: "Hands together",
       octave: "1 octave",
     },
     {
       key: "G",
       type: "major",
-      motion: "",
+      motion: "Scales (similar motion)",
       hands: "Left hand",
       octave: "2 octaves",
     },
     {
       key: "G",
       type: "major",
-      motion: "",
+      motion: "Scales (similar motion)",
       hands: "Right hand",
       octave: "2 octaves",
     },
     {
       key: "F",
       type: "major",
-      motion: "",
+      motion: "Scales (similar motion)",
       hands: "Left hand",
       octave: "2 octaves",
     },
     {
       key: "F",
       type: "major",
-      motion: "",
+      motion: "Scales (similar motion)",
       hands: "Right hand",
       octave: "2 octaves",
     },
     {
       key: "A",
       type: "minor",
-      motion: "",
+      motion: "Scales (similar motion)",
       hands: "Left hand",
       octave: "2 octaves",
     },
     {
       key: "A",
       type: "minor",
-      motion: "",
+      motion: "Scales (similar motion)",
       hands: "Right hand",
       octave: "2 octaves",
     },
     {
       key: "D",
       type: "minor",
-      motion: "",
+      motion: "Scales (similar motion)",
       hands: "Left hand",
       octave: "2 octaves",
     },
     {
       key: "D",
       type: "minor",
-      motion: "",
+      motion: "Scales (similar motion)",
       hands: "Right hand",
       octave: "2 octaves",
     },
@@ -105,6 +105,7 @@ $(document).ready(function () {
       level1Scales[Math.floor(Math.random() * level1Scales.length)];
     $("#key").text(randomScale.key);
     $("#type").text(randomScale.type);
+    $("#motion").text(randomScale.motion);
     $("#octave").text(randomScale.octave);
     $("#hands").text(randomScale.hands);
 
