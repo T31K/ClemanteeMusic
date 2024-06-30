@@ -1,10 +1,17 @@
-.scale-card {
+.tool-card {
   width: 100%;
-  background:#f2edd7;
-  border-radius: 20px;
+  padding: 20px;
+  background: #f2edd7;
   font-family: 'Fredoka One', cursive;
 }
 
+.tool-card:nth-child(1) {
+  border-radius: 20px 20px 0 0;
+}
+
+.tool-card:nth-child(2) {
+  border-radius: 0 0 20px 20px;
+}
 
 .title {
   font-size: 55px;
@@ -27,7 +34,8 @@
   margin: 10px auto;
 }
 
-.octave, .motion {
+.octave,
+.motion {
   font-size: 20px;
 }
 
@@ -46,4 +54,339 @@
 .btn-randomize {
   background: #3a6351;
   color: white;
+}
+
+
+.metronome-container {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.2s ease-out;
+}
+
+.metronome-container * {
+  transition: inherit;
+}
+
+.bpmBox {
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+
+  width: 15rem;
+  height: 2rem;
+}
+
+.bpmBox #bpm {
+  height: 100%;
+  width: 30%;
+
+  border-radius: 0 18px 0 0;
+
+  box-sizing: border-box;
+  border: 0.2rem solid #6e6e6e;
+  border-right: none;
+  border-top: none;
+
+  text-align: center;
+  font-size: 1rem;
+
+  background-color: #969696;
+  color: black;
+}
+
+.bpmBox #bpm:hover {
+  background-color: #b1b1b1;
+}
+
+.bpmBox #signature {
+  height: 100%;
+  width: 40%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  border: 0.2rem solid #6e6e6e;
+  border-right: none;
+  border-top: none;
+
+  background-color: #969696;
+  color: black;
+}
+
+.bpmBox #signature input {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: 1rem;
+
+  border-radius: 0;
+
+  box-sizing: border-box;
+
+  background-color: #969696;
+  color: black;
+  border: none;
+
+  text-align: center;
+}
+
+.bpmBox #signature select {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: 1rem;
+
+  border-radius: 0;
+
+  box-sizing: border-box;
+
+  background-color: #969696;
+  color: black;
+  border: none;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.bpmBox #signature select::-ms-expand {
+  display: none;
+}
+
+.bpmBox #signature input:hover {
+  background-color: #b1b1b1;
+}
+
+.bpmBox #tap {
+  height: 100%;
+  width: 30%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  border-radius: 18px 0 0 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 0.2rem solid #6e6e6e;
+
+  text-align: center;
+  font-size: 1rem;
+
+  background-color: #969696;
+  color: black;
+}
+
+.bpmBox #tap:hover {
+  background-color: #b1b1b1;
+}
+
+.arrangementBox {
+  width: 15rem;
+  height: 2rem;
+
+  background-color: #969696;
+  color: black;
+
+  box-sizing: border-box;
+  border-bottom: 0.2rem solid #6e6e6e;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.arrangementBox #position {
+  background-color: #969696;
+  color: black;
+
+  width: auto;
+  text-align: center;
+  font-size: 1rem;
+  border-width: 0;
+}
+
+.metronome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 18px 18px;
+  width: 15rem;
+  height: 10rem;
+
+  background-color: #969696;
+}
+
+.metronome:hover {
+  background-color: #b1b1b1;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #c3c3c3;
+  color: black;
+
+  width: 15rem;
+}
+
+.menu>* {
+  padding: 1rem 0.4rem;
+}
+
+.menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+#darkMode {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+
+  z-index: 2;
+
+  width: 3rem;
+  height: 3rem;
+}
+
+#darkMode:hover~.container .icon #sun {
+  opacity: 0.8;
+}
+
+#darkMode:checked~.container .icon #sun {
+  background-color: #d2d2d2;
+}
+
+#darkMode:checked~.container .icon #moon {
+  background-color: #373737;
+  transform: translateX(0.5rem) translateY(-0.2rem);
+  opacity: 1;
+}
+
+/* change the colour palette */
+#darkMode:checked~.container {
+  background-color: #373737;
+  color: #d2d2d2;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 3rem;
+  height: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon * {
+  width: 2rem;
+  height: 2rem;
+
+  border-radius: 50%;
+}
+
+.icon #sun {
+  background-color: #3a6351;
+}
+
+.icon #moon {
+  position: absolute;
+
+  background-color: #6e6e6e;
+
+  transform: translateX(2rem) translateY(-0.8rem);
+
+  opacity: 0;
+}
+
+.dot {
+  transition: none;
+
+  width: 4rem;
+  height: 4rem;
+
+  border-radius: 50%;
+  border: 0.5rem solid black;
+}
+
+.dot1 {
+  background-color: black;
+}
+
+.dot2 {
+  margin-left: 1rem;
+  background-color: inherit;
+}
+
+#dot {
+  display: none;
+}
+
+#dot:checked~.metronome>.dot1 {
+  background-color: inherit;
+}
+
+#dot:checked~.metronome>.dot2 {
+  background-color: black;
+}
+
+#selected {
+  display: none;
+}
+
+#selected:checked~.metronome {
+  background-color: #3a6351;
+}
+
+#selected:checked~.metronome:hover {
+  background-color: #3a6351;
+}
+
+#selected:checked~.metronome>.dot {
+  border-color: black;
+}
+
+#selected:checked~.metronome>.dot1 {
+  background-color: black;
+}
+
+#selected:checked~#dot:checked~.metronome>.dot1 {
+  background-color: inherit;
+}
+
+#selected:checked~#dot:checked~.metronome>.dot2 {
+  background-color: black;
 }
