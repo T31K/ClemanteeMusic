@@ -15,19 +15,18 @@ const selected_element = document.getElementById("selected");
 const bpm_element = document.getElementById("bpm");
 const dot_element = document.getElementById("dot");
 
+let soundCache = null;
+
 // loadSounds loads all the metronome sounds
 function loadSounds() {
-  let cla_p = new Audio("../sounds/classic_p.wav");
-  let cla_s = new Audio("../sounds/classic_s.wav");
-  let cli_ps = new Audio("../sounds/click_ps.wav");
-  let woo_p = new Audio("../sounds/wood_p.wav");
-  let woo_s = new Audio("../sounds/wood_s.wav");
+  if (!soundCache) {
+    let cla_p = new Audio("../sounds/classic_p.mp3");
+    let cla_s = new Audio("../sounds/classic_s.mp3");
+    let classic = [cla_p, cla_s];
 
-  let classic = [cla_p, cla_s];
-  let click = [cli_ps, cli_ps];
-  let wood = [woo_p, woo_s];
-
-  return [classic, click, wood];
+    soundCache = [classic];
+  }
+  return soundCache;
 }
 
 // selectedSound checks for which radio button is checked
@@ -56,18 +55,6 @@ function addListeners() {
 
   tap_element.onclick = () => {
     tapLogic();
-  };
-
-  metronome_element.onclick = () => {
-    selected_element.checked = !selected_element.checked;
-
-    bpm_timer.stop();
-
-    if (selected_element.checked) {
-      bpm_timer.setInterval(60000 / (bpm_element.value * 4));
-      arrangement.position = 0;
-      bpm_timer.start();
-    }
   };
 
   start_button.onclick = () => {
@@ -105,7 +92,7 @@ function addListeners() {
   };
 }
 
-// updateArrangementPosition does exactly what is sounds like
+// updateArrangementPosition does exactly what it sounds like
 function updateArrangementPosition() {
   arrangement_pos_element.value = arrangement.positionString;
 }
@@ -177,7 +164,7 @@ function main() {
   // setting the callback on bpm timer
   bpm_timer.setCallback(step);
 
-  // allow for input after initalizing everything
+  // allow for input after initializing everything
   addListeners();
 }
 
