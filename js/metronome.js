@@ -17,11 +17,11 @@ const dot_element = document.getElementById("dot");
 
 // loadSounds loads all the metronome sounds
 function loadSounds() {
-  let cla_p = new Audio("assets/classic_p.wav");
-  let cla_s = new Audio("assets/classic_s.wav");
-  let cli_ps = new Audio("assets/click_ps.wav");
-  let woo_p = new Audio("assets/wood_p.wav");
-  let woo_s = new Audio("assets/wood_s.wav");
+  let cla_p = new Audio("../sounds/classic_p.wav");
+  let cla_s = new Audio("../sounds/classic_s.wav");
+  let cli_ps = new Audio("../sounds/click_ps.wav");
+  let woo_p = new Audio("../sounds/wood_p.wav");
+  let woo_s = new Audio("../sounds/wood_s.wav");
 
   let classic = [cla_p, cla_s];
   let click = [cli_ps, cli_ps];
