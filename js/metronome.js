@@ -1,171 +1,124 @@
-const TAP_OFFSET = 2000;
-const tap_timer = new Timer();
-const bpm_timer = new Timer({ startint: true });
-let arrangement = new Arrangement();
+var audioContext = null;
+var isPlaying = false; // Are we currently playing?
+var startTime; // The start time of the entire sequence.
+var currentTwelveletNote; // What note is currently last scheduled?
+var tempo = 120.0; // tempo (in beats per minute)
+var meter = 4;
+var masterVolume = 0.5;
+var accentVolume = 1;
+var quarterVolume = 0.75;
+var eighthVolume = 0;
+var sixteenthVolume = 0;
+var tripletVolume = 0;
+var lookahead = 25.0; // How frequently to call scheduling function
+//(in milliseconds)
+var scheduleAheadTime = 0.1; // How far ahead to schedule audio (sec)
+// This is calculated from lookahead, and overlaps
+// with next interval (in case the timer is late)
+var nextNoteTime = 0.0; // when the next note is due.
+var noteLength = 0.05; // length of "beep" (in seconds)
+var notesInQueue = []; // the notes that have been put into the web audio,
+// and may or may not have played yet. {note, time}
+var timerWorker = null; // The Web Worker used to fire timer messages
 
-const arrangement_pos_element = document.getElementById("position");
-const sound_radios_element = document.getElementsByName("soundGroup");
-const denominator_element = document.getElementById("denominator");
-const metronome_element = document.querySelector(".metronome");
-const start_button = document.querySelector(".startBtn");
-const numerator_element = document.getElementById("numerator");
-const darkMode_element = document.getElementById("darkMode");
-const tap_element = document.getElementById("tap");
-const selected_element = document.getElementById("selected");
-const bpm_element = document.getElementById("bpm");
-const dot_element = document.getElementById("dot");
-
-let soundCache = null;
-
-// loadSounds loads all the metronome sounds
-function loadSounds() {
-  if (!soundCache) {
-    let cla_p = new Audio("../sounds/classic_p.mp3");
-    let cla_s = new Audio("../sounds/classic_s.mp3");
-    let classic = [cla_p, cla_s];
-
-    soundCache = [classic];
-  }
-  return soundCache;
+function maxBeats() {
+  var beats = meter * 12;
+  return beats;
 }
 
-// selectedSound checks for which radio button is checked
-function selectedSound(radios) {
-  for (let x = 0; x < radios.length; x++) {
-    if (radios[x].checked) {
-      return x;
-    }
+function nextTwelvelet() {
+  var secondsPerBeat = 60.0 / tempo;
+  nextNoteTime += 0.08333 * secondsPerBeat; // Add beat length to last beat time
+  currentTwelveletNote++; // Advance the beat number, wrap to zero
+
+  if (currentTwelveletNote == maxBeats()) {
+    currentTwelveletNote = 0;
   }
 }
 
-// addListeners adds event listeners to allow for inputs
-function addListeners() {
-  document.onkeydown = (event) => {
-    switch (event.code) {
-      case "Space":
-        metronome_element.click();
-        break;
-      case "KeyD":
-        darkMode_element.click();
-        break;
-      case "KeyT":
-        tap_element.click();
-    }
-  };
-
-  tap_element.onclick = () => {
-    tapLogic();
-  };
-
-  start_button.onclick = () => {
-    selected_element.checked = !selected_element.checked;
-    start_button.textContent = selected_element.checked ? "Stop" : "Start";
-    bpm_timer.stop();
-
-    if (selected_element.checked) {
-      bpm_timer.setInterval(60000 / (bpm_element.value * 4));
-      arrangement.position = 0;
-      bpm_timer.start();
-    }
-  };
-
-  denominator_element.onchange = () => {
-    arrangement.denominator = denominator_element.value;
-    updateArrangementPosition();
-  };
-
-  bpm_element.onchange = () => {
-    bpm_element.value = bpm_element.value.replace(/\D/g, "");
-    if (bpm_element.value == "") {
-      bpm_element.value = 120;
-    }
-    bpm_timer.setInterval(60000 / (bpm_element.value * 4));
-  };
-
-  numerator_element.oninput = () => {
-    numerator_element.value = numerator_element.value.replace(/\D/g, "");
-    if (numerator_element.value == "") {
-      numerator_element.value = 4;
-    }
-
-    numerator_element.value;
-  };
+function calcVolume(beatVolume) {
+  return beatVolume * masterVolume;
 }
 
-// updateArrangementPosition does exactly what it sounds like
-function updateArrangementPosition() {
-  arrangement_pos_element.value = arrangement.positionString;
-}
+function scheduleNote(beatNumber, time) {
+  // push the note on the queue, even if we're not playing.
+  notesInQueue.push({ note: beatNumber, time: time });
 
-// tapLogic contains tap logic, it decides how and when the water flows
-function tapLogic() {
-  // resetting the tap_array, funnily enough - I didn't have to define
-  // tap_array elsewhere, if the tap_array is defined here it'll stay
-  // there for only this function, which is kinda sick and I don't really
-  // care to make this prettier
-  let ms = tap_timer.stop();
-  if (ms > TAP_OFFSET) {
-    tap_array = [];
-  }
+  // create oscillator & gainNode & connect them to the context destination
+  var osc = audioContext.createOscillator();
+  var gainNode = audioContext.createGain();
 
-  tap_array.push(ms);
+  osc.connect(gainNode);
+  gainNode.connect(audioContext.destination);
 
-  tap_timer.start();
-
-  // summing all the ms in array to extract mean
-  let ms_sum = 0;
-  tap_array.forEach((ms, index) => {
-    if (index != 0) {
-      ms_sum += ms;
+  if (beatNumber % maxBeats() === 0) {
+    if (accentVolume > 0.25) {
+      osc.frequency.value = 880.0;
+      gainNode.gain.value = calcVolume(accentVolume);
+    } else {
+      osc.frequency.value = 440.0;
+      gainNode.gain.value = calcVolume(quarterVolume);
     }
-  });
-  let bpm_result = 60000 / (ms_sum / (tap_array.length - 1));
-
-  // showing the initial 1 - 2 - 3 - 4 instead of 'Tap'
-  if (tap_array.length < 5) {
-    tap_element.value = tap_array.length;
+  } else if (beatNumber % 12 === 0) {
+    // quarter notes = medium pitch
+    osc.frequency.value = 440.0;
+    gainNode.gain.value = calcVolume(quarterVolume);
+  } else if (beatNumber % 6 === 0) {
+    osc.frequency.value = 440.0;
+    gainNode.gain.value = calcVolume(eighthVolume);
+  } else if (beatNumber % 4 === 0) {
+    osc.frequency.value = 300.0;
+    gainNode.gain.value = calcVolume(tripletVolume);
+  } else if (beatNumber % 3 === 0) {
+    // other 16th notes = low pitch
+    osc.frequency.value = 220.0;
+    gainNode.gain.value = calcVolume(sixteenthVolume);
   } else {
-    tap_element.value = "Tap";
-    if (!!bpm_result) {
-      bpm_element.value = parseInt(bpm_result);
-      bpm_timer.setInterval(60000 / (bpm_result * 4));
-    }
+    gainNode.gain.value = 0; // keep the remaining twelvelet notes inaudible
+  }
+
+  osc.start(time);
+  osc.stop(time + noteLength);
+}
+
+function scheduler() {
+  while (nextNoteTime < audioContext.currentTime + scheduleAheadTime) {
+    scheduleNote(currentTwelveletNote, nextNoteTime);
+    nextTwelvelet();
   }
 }
 
-function main() {
-  let sounds = loadSounds();
+function play() {
+  isPlaying = !isPlaying;
 
-  // init the denominator value
-  arrangement.denominator = denominator_element.value;
-
-  let step = () => {
-    updateArrangementPosition();
-
-    // calculating if the metronome should tick, I figured it out like a
-    // week ago and don't really have a desire to reread that so it'll
-    // probably stay in this form forever, unless someone wants to do a PR
-    if (arrangement.pos % 4 == 0) {
-      dot_element.checked = !dot_element.checked;
-      if (
-        (arrangement.pos / (16 / denominator_element.value)) %
-          numerator_element.value ==
-        0
-      ) {
-        sounds[selectedSound(sound_radios_element)][0].play();
-      } else {
-        sounds[selectedSound(sound_radios_element)][1].play();
-      }
-    }
-
-    // advancing arrangement every step
-    arrangement.move();
-  };
-  // setting the callback on bpm timer
-  bpm_timer.setCallback(step);
-
-  // allow for input after initializing everything
-  addListeners();
+  if (isPlaying) {
+    currentTwelveletNote = 0;
+    nextNoteTime = audioContext.currentTime;
+    timerWorker.postMessage("start");
+    document.getElementById("play-btn").innerHTML = "Stop";
+  } else {
+    timerWorker.postMessage("stop");
+    document.getElementById("play-btn").innerHTML = "Start";
+  }
 }
 
-main();
+function init() {
+  audioContext = new AudioContext();
+  timerWorker = new Worker("/js/worker.js");
+
+  timerWorker.onmessage = function (e) {
+    if (e.data == "tick") {
+      scheduler();
+    } else {
+      console.log("message: " + e.data);
+    }
+  };
+
+  timerWorker.postMessage({ interval: lookahead });
+}
+
+window.addEventListener("load", init);
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("play-btn").addEventListener("click", play);
+});
