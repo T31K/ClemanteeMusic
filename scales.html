@@ -99,9 +99,6 @@
         <!--End Page Title-->
 
         <section class="program-detail">
-            <div class="auto-container tool-card">
-
-            </div>
 
             <div class="auto-container tool-card">
                 <div class="container-fluid">
@@ -110,29 +107,38 @@
                             <h6 class="h5">Tempo</h6>
                             <h2 id="bpm" class="display-4"><output name="bpm" id="bpmOutput">120</output><span class="h6"> bpm</span></h2>
                             <input class="form-range mb-4" type="range" name="bpm" id="bpmInput" value="120" min="20" max="250" oninput="tempo = event.target.value; bpmOutput.value = bpmInput.value;">
-                            <h4 id="bpm" class="display-5"><output name="count" id="countOutput">4</output><span class="h6"> counts</span></h2>
+                            <h4 class="display-5"><output name="count" id="countOutput">4</output><span class="h6"> counts</span></h4>
                             <input class="form-range mb-4" type="range" name="count" id="countInput" value="4" min="1" max="12" oninput="meter = event.target.value; countOutput.value = countInput.value;">
                             <button id="play-btn" class="btn btn-randomize mx-auto mt-2 mb-5">Start</button>
                         </div>
                     </div>
                 </div>
-                <select name="level" id="" class="form-control">
-                    <option value="level_1">Grade 1</option>
-                    <option value="level_2">Grade 2</option>
-                    <option value="level_3">Grade 3</option>
-                    <option value="level_4">Grade 4</option>
-                    <option value="level_5">Grade 5</option>
-                    <option value="level_6">Grade 6</option>
-                    <option value="level_7">Grade 7</option>
-                    <option value="level_8">Grade 8</option>
+
+                <!-- Level Selector -->
+                <select name="level" id="levelSelect" class="form-control">
+                    <option value="grade_1">Grade 1</option>
+                    <option value="grade_2">Grade 2</option>
+                    <option value="grade_3">Grade 3</option>
+                    <option value="grade_4">Grade 4</option>
+                    <option value="grade_5">Grade 5</option>
+                    <option value="grade_6">Grade 6</option>
+                    <option value="grade_7">Grade 7</option>
+                    <option value="grade_8">Grade 8</option>
                 </select>
+
+                <!-- Scale Card with Details -->
                 <div class="scale-card p-4 rounded-lg text-center">
+                    <div class="progress-container">
+                        <div id="progress-indicator" class="text-center mb-4"></div>
+                    </div>
+
                     <div class="title-round">
                         <div id="key" class="title">C</div>
                     </div>
                     <div id="type" class="subtitle">major</div>
-                    <div id="octave" class="py-2 mt-5 octave">1 Octave</div>
-                    <div id="motion" class="py-2 mb-5 motion">Similar Motion Scales</div>
+                    <div id="motion" class="py-2 mt-5 motion">Similar Motion Scales</div>
+                    <div id="style" class="py-2 legato text-capitalize" >Style</div>
+                    <div id="octave" class="py-2 mb-5 octave">1 Octave</div>
                     <img id="left-hand" src="images/scales/left.webp" alt="left hand" class="img-hand">
                     <img id="right-hand" src="images/scales/right.webp" alt="right hand" class="img-hand">
                     <div id="hands" class="py-2">Hands Together</div>
@@ -140,12 +146,6 @@
                 </div>
             </div>
         </section>
-
-        <section class='auto-container'>
-
-
-        </section>
-
 
         <section class="call-to-action">
             <div class="parallax-scene parallax-scene-3 anim-icons">

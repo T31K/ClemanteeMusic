@@ -14,14 +14,14 @@
 }
 
 .title {
-  font-size: 55px;
+  font-size: 45px;
   margin: 10px auto;
 }
 
 .title-round {
   background: white;
-  width: 160px;
-  height: 160px;
+  width: 90px;
+  height: 90px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -35,7 +35,8 @@
 }
 
 .octave,
-.motion {
+.motion,
+.legato {
   font-size: 20px;
 }
 
@@ -469,3 +470,23 @@
   display: block;
   margin: 0 auto;
 }
+
+
+#progress-indicator .level {
+  display: inline-block;
+  padding: 5px 10px;
+  color: gray;
+}
+
+#progress-indicator .level.completed {
+  color: green;
+}
+
+#progress-indicator .level.active {
+  color: #3a6351;
+}
+
+#progress-indicator .level.inactive {
+  color: gray;
+}
+
